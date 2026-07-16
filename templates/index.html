@@ -1,10 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI URL Detector</title>
+
+    <!-- Correct CSS Linking -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
-$END$
+
+<div class="container">
+    <div class="card">
+        <h1> AI URL Safety Checker</h1>
+        <p class="subtitle">Check if a URL is safe or malicious using AI</p>
+
+        <form method="POST">
+            <input type="text" name="url" placeholder="Enter URL here..." required>
+            <button type="submit">Check URL</button>
+        </form>
+
+        {% if result %}
+            <div class="result {% if 'Safe' in result %}safe{% else %}danger{% endif %}">
+                {{ result }}
+            </div>
+        {% endif %}
+    </div>
+</div>
+
 </body>
 </html>
